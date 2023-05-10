@@ -11,6 +11,7 @@ let rey = "K_";
 let fichas = [peon, caballo, alfil, torre, reina, rey];
 
 function crearTablero(num_casillas) {
+  
   let nTablero = [];
 
   for (let i = 0; i < num_casillas; i++) {
@@ -22,25 +23,26 @@ function crearTablero(num_casillas) {
   return (tablero = nTablero);
 }
 
-// function colocarFichas(lista, lista2) {
-//   let contador = 0
+function colocarFichas(lista, lista2) {
 
-//   for (let i = 0; i < lista.length; i++) {
-//     for (let j = 0; j < lista.length; j++) {
-//       for (let ficha of lista2) {
-//         if(contador < lista2.length){
+  let contador = 0;
 
-//           let x = Math.floor(Math.random() * (7 - 0) + 0);
-//           let y = Math.floor(Math.random() * (7 - 0) + 0);
+  for (let i = 0; i < lista.length; i++) {
+    for (let j = 0; j < lista.length; j++) {
+      for (let ficha of lista2) {
+        if(contador < 7){
 
-//           tablero[x][y] = ficha;
-//           contador++
-//         }
-//       }
-//     }
-//   }
-//   return impresora(lista);
-// }
+          let x = Math.floor(Math.random() * (8 - 0) + 0);
+          let y = Math.floor(Math.random() * (8 - 0) + 0);
+
+          tablero[x][y] = ficha;
+          contador++
+        }
+      }
+    }
+  }
+  return impresora(lista);
+}
 
 function impresora(lista) {
   for (let i = 0; i < lista.length; i++) {
@@ -78,6 +80,6 @@ function peonMove(lista, ficha) {
 }
 
 crearTablero(8);
-// colocarFichas(tablero, fichas);
-impresora(tablero);
+colocarFichas(tablero, fichas);
+//impresora(tablero);
 peonMove(tablero, peon);
