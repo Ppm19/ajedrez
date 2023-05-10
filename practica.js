@@ -30,7 +30,7 @@ function colocarFichas(lista, lista2) {
   for (let i = 0; i < lista.length; i++) {
     for (let j = 0; j < lista.length; j++) {
       for (let ficha of lista2) {
-        if(contador < 7){
+        if(contador < lista2.length){
 
           let x = Math.floor(Math.random() * (8 - 0) + 0);
           let y = Math.floor(Math.random() * (8 - 0) + 0);
