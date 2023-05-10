@@ -8,6 +8,8 @@ let torre = "T_";
 let reina = "Q_";
 let rey = "K_";
 
+let fichas = [peon, caballo, alfil, torre, reina, rey];
+
 function crearTablero(num_casillas) {
   let nTablero = [];
 
@@ -20,41 +22,62 @@ function crearTablero(num_casillas) {
   return (tablero = nTablero);
 }
 
-function impresora(tablero) {
-  for (let i = 0; i < tablero.length; i++) {
+// function colocarFichas(lista, lista2) {
+//   let contador = 0
+
+//   for (let i = 0; i < lista.length; i++) {
+//     for (let j = 0; j < lista.length; j++) {
+//       for (let ficha of lista2) {
+//         if(contador < lista2.length){
+
+//           let x = Math.floor(Math.random() * (7 - 0) + 0);
+//           let y = Math.floor(Math.random() * (7 - 0) + 0);
+
+//           tablero[x][y] = ficha;
+//           contador++
+//         }
+//       }
+//     }
+//   }
+//   return impresora(lista);
+// }
+
+function impresora(lista) {
+  for (let i = 0; i < lista.length; i++) {
     let linea = "|";
-    tablero[4][5] = peon;
-    for (let j = 0; j < tablero.length; j++) {
-      if (tablero[i][j] == null) {
+    lista[3][6] = reina;
+    lista[3][5] = rey;
+    lista[4][5] = peon;
+    for (let j = 0; j < lista.length; j++) {
+      if (lista[i][j] == null) {
         linea += "__" + "|";
       } else {
-        linea += tablero[i][j] + "|";
+        linea += lista[i][j] + "|";
       }
     }
     console.log(linea);
   }
 }
 
-function peonMove(tablero, ficha) {
-
-  for (let i = 0; i < tablero.length; i++) {
-    for (let j = 0; j < tablero.length; j++) {
-      if (tablero[i][j] == ficha) {
-        if (tablero[i][j] == null) {
+function peonMove(lista, ficha) {
+  for (let i = 0; i < lista.length; i++) {
+    for (let j = 0; j < lista.length; j++) {
+      if (lista[i][j] == ficha) {
+        if (lista[i][j-1] == null) {
           console.log("El peón puede moverse hacia delante");
-        } else if (tablero[i - 1][j - 1] != null) {
-          console.log("El peón puede comerse a " + tablero[i - 1][j - 1]);
-        } else if (tablero[i + 1][j - 1] != null) {
-          console.log("El peón puede comerse a " + tablero[i + 1][j - 1]);
-        } else if (tablero[i][j - 1] != null) {
+        } else if (lista[i-1][j-1] != null) {
+          console.log("El peón puede comerse a " + lista[i - 1][j - 1]);
+        } else if (lista[i+1][j-1] != null) {
+          console.log("El peón puede comerse a " + lista[i + 1][j - 1]);
+        } else if (lista[i][j-1] != null) {
           console.log("El peón no tiene movimientos posibles");
         }
       }
     }
   }
-  return 
 }
 
 crearTablero(8);
+// colocarFichas(tablero, fichas);
 impresora(tablero);
-peonMove(tablero,peon);
+peonMove(tablero, peon);
