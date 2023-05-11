@@ -86,25 +86,25 @@ function reyMove(lista, ficha) {
         if (lista[i - 1][j] != null) {
           console.log("El rey puede comer a " + lista[i - 1][j]);
         }
-        if (lista[i - 1][j + 1]) {
+        if (lista[i - 1][j + 1] != null) {
           console.log("El rey puede comer a " + lista[i - 1][j + 1]);
         }
-        if (lista[i - 1][j - 1]) {
+        if (lista[i - 1][j - 1] != null) {
           console.log("El rey puede comer a " + lista[i - 1][j - 1]);
         }
-        if (lista[i][j - 1]) {
+        if (lista[i][j - 1] !=null) {
           console.log("El rey puede comer a " + lista[i][j - 1]);
         }
-        if (lista[i][j + 1]) {
+        if (lista[i][j + 1] != null) {
           console.log("El rey puede comer a " + lista[i][j + 1]);
         }
-        if (lista[i + 1][j + 1]) {
+        if (lista[i + 1][j + 1] != null) {
           console.log("El rey puede comer a " + lista[i + 1][j + 1]);
         }
-        if (lista[i + 1][j - 1]) {
+        if (lista[i + 1][j - 1] != null) {
           console.log("El rey puede comer a " + lista[i + 1][j - 1]);
         }
-        if (lista[i+1][j]){
+        if (lista[i+1][j] != null) {
           console.log("El rey puede comer a " + lista[i+1][j]);
         }
       }
@@ -112,18 +112,24 @@ function reyMove(lista, ficha) {
   }
 }
 
-function alfilMove(lista,ficha){
-  for (let i = 0; i < lista.length; i++) {
-    for (let j = 0; j < lista.length; j++) {
-      if (lista[i][j] == ficha) {
-      }
-    }
-  }
-}
+// function alfilMove(lista,ficha){
+//   let pos_x = i;
+//   let pos_y = j;
+
+//   for (let i = 0; i < lista.length; i++) {
+//     for (let j = 0; j < lista.length; j++) {
+//       if (lista[i][j] == ficha) {
+//         while(){
+
+//         }
+//       }
+//     }
+//   }
+// }
 
 crearTablero(8);
 colocarFichas(tablero, fichas);
 // impresora(tablero);
 peonMove(tablero, peon);
 reyMove(tablero, rey);
-alfilMove(tablero,alfil);
+//alfilMove(tablero,alfil);
