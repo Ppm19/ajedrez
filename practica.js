@@ -10,6 +10,11 @@ let rey = "♔_";
 
 let fichas = [peon, caballo, alfil, torre, reina, rey];
 
+/**
+ * Función que crea un tablero de la cantidad de casillas que tu le pases
+ * @param {Int} num_casillas 
+ * @returns 
+ */
 function crearTablero(num_casillas) {
   let nTablero = [];
 
@@ -22,6 +27,12 @@ function crearTablero(num_casillas) {
   return (tablero = nTablero);
 }
 
+/**
+ * Funcion que coloca de forma aleatoria en una lista el contenido de otra lista
+ * @param {Array} lista 
+ * @param {Array} lista2 
+ * @returns 
+ */
 function colocarFichas(lista, lista2) {
   let contador = 0;
 
@@ -41,6 +52,10 @@ function colocarFichas(lista, lista2) {
   return impresora(lista);
 }
 
+/**
+ * Función que imprime de forma mas "xeitosa" la lista
+ * @param {Array} lista 
+ */
 function impresora(lista) {
   for (let i = 0; i < lista.length; i++) {
     let linea = "|";
@@ -55,6 +70,11 @@ function impresora(lista) {
   }
 }
 
+/**
+ * Funcion que recorre una lista y si encuentra la ficha comprueba que movimientos puede hacer
+ * @param {Array} lista 
+ * @param {String} ficha 
+ */
 function peonMove(lista, ficha) {
   for (let i = 0; i < lista.length; i++) {
     for (let j = 0; j < lista.length; j++) {
@@ -79,6 +99,11 @@ function peonMove(lista, ficha) {
   }
 }
 
+/**
+ * Funcion que recorre una lista y si encuentra la ficha comprueba que movimientos puede hacer
+ * @param {Array} lista 
+ * @param {String} ficha 
+ */
 function reyMove(lista, ficha) {
   for (let i = 0; i < lista.length; i++) {
     for (let j = 0; j < lista.length; j++) {
@@ -116,6 +141,11 @@ function reyMove(lista, ficha) {
   }
 }
 
+/**
+ * Funcion que recorre una lista y si encuentra la ficha comprueba que movimientos puede hacer
+ * @param {Array} lista 
+ * @param {String} ficha 
+ */
 function torreMove(lista, ficha) {
   for (let i = 0; i < lista.length; i++) {
     for (let j = 0; j < lista.length; j++) {
@@ -148,6 +178,12 @@ function torreMove(lista, ficha) {
     }
   }
 }
+
+/**
+ * Funcion que recorre una lista y si encuentra la ficha comprueba que movimientos puede hacer
+ * @param {Array} lista 
+ * @param {String} ficha 
+ */
 function alfilMove(lista, ficha) {
   for (let i = 0; i < lista.length; i++) {
     for (let j = 0; j < lista.length; j++) {
@@ -174,6 +210,12 @@ function alfilMove(lista, ficha) {
     }
   }
 }
+
+/**
+ * Funcion que recorre una lista y si encuentra la ficha comprueba que movimientos puede hacer
+ * @param {Array} lista 
+ * @param {String} ficha 
+ */
 function caballoMove(lista, ficha) {
   for (let i = 0; i < lista.length; i++) {
     for (let j = 0; j < lista.length; j++) {
@@ -210,6 +252,12 @@ function caballoMove(lista, ficha) {
     }
   }
 }
+
+/**
+ * Funcion que recorre una lista y si encuentra la ficha comprueba que movimientos puede hacer
+ * @param {Array} lista 
+ * @param {String} ficha 
+ */
 function reinaMove(lista, ficha) {
   for (let i = 0; i < lista.length; i++) {
     for (let j = 0; j < lista.length; j++) {
