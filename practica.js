@@ -1,12 +1,12 @@
 "use strict";
 
 let tablero = [];
-let peon = "P_";
-let caballo = "C_";
-let alfil = "A_";
-let torre = "T_";
-let reina = "Q_";
-let rey = "K_";
+let peon = "♙_";
+let caballo = "♘_";
+let alfil = "♗_";
+let torre = "♖_";
+let reina = "♕_";
+let rey = "♔_";
 
 let fichas = [peon, caballo, alfil, torre, reina, rey];
 
@@ -29,8 +29,8 @@ function colocarFichas(lista, lista2) {
     for (let j = 0; j < lista.length; j++) {
       for (let ficha of lista2) {
         if (contador < lista2.length) {
-          let x = Math.floor(Math.random() * (7 - 0) + 0);
-          let y = Math.floor(Math.random() * (7 - 0) + 0);
+          let x = Math.floor(Math.random() * 8);
+          let y = Math.floor(Math.random() * 8);
 
           tablero[x][y] = ficha;
           contador++;
@@ -44,10 +44,6 @@ function colocarFichas(lista, lista2) {
 function impresora(lista) {
   for (let i = 0; i < lista.length; i++) {
     let linea = "|";
-    // lista[3][4] = caballo;
-    // lista[3][6] = reina;
-    // lista[3][5] = rey;
-    // lista[4][5] = peon;
     for (let j = 0; j < lista.length; j++) {
       if (lista[i][j] == null) {
         linea += "__" + "|";
@@ -63,16 +59,20 @@ function peonMove(lista, ficha) {
   for (let i = 0; i < lista.length; i++) {
     for (let j = 0; j < lista.length; j++) {
       if (lista[i][j] == ficha) {
-        if (lista[i - 1][j] == null) {
-          console.log("El peón puede moverse hacia delante");
+        if(i + 1  > lista.length || j + 1 > lista.length || i - 1 < 0 || j - 1 < 0){
+          console.log("No puede comer a nadie")
+          break;
         }
-        if (lista[i - 1][j + 1] != null) {
-          console.log("El peón puede comerse a " + lista[i - 1][j + 1]);
-        }
-        if (lista[i - 1][j - 1] != null) {
-          console.log("El peón puede comerse a " + lista[i - 1][j - 1]);
-        } else if (lista[i - 1][j] != null) {
-          console.log("El peón no tiene movimientos posibles");
+          if (lista[i - 1][j] == null) {
+            console.log("El Peón(P) puede moverse hacia delante");
+          }
+          if (lista[i - 1][j + 1] != null) {
+            console.log("El Peón(P) puede comerse a " + lista[i - 1][j + 1]);
+          }
+          if (lista[i - 1][j - 1] != null) {
+            console.log("El Peón(P) puede comerse a " + lista[i - 1][j - 1]);
+          } else if (lista[i - 1][j] != null) {
+            console.log("El Peón(P) no tiene movimientos posibles");
         }
       }
     }
@@ -83,53 +83,191 @@ function reyMove(lista, ficha) {
   for (let i = 0; i < lista.length; i++) {
     for (let j = 0; j < lista.length; j++) {
       if (lista[i][j] == ficha) {
+        if(i + 1  > lista.length || j + 1 > lista.length || i - 1 < 0 || j - 1 < 0){
+          console.log("No puede comer a nadie")
+          break;
+        }
         if (lista[i - 1][j] != null) {
-          console.log("El rey puede comer a " + lista[i - 1][j]);
+          console.log("El Rey(K) puede comer a " + lista[i - 1][j]);
         }
         if (lista[i - 1][j + 1] != null) {
-          console.log("El rey puede comer a " + lista[i - 1][j + 1]);
+          console.log("El Rey(K) puede comer a " + lista[i - 1][j + 1]);
         }
         if (lista[i - 1][j - 1] != null) {
-          console.log("El rey puede comer a " + lista[i - 1][j - 1]);
+          console.log("El Rey(K) puede comer a " + lista[i - 1][j - 1]);
         }
-        if (lista[i][j - 1] !=null) {
-          console.log("El rey puede comer a " + lista[i][j - 1]);
+        if (lista[i][j - 1] != null) {
+          console.log("El Rey(K) puede comer a " + lista[i][j - 1]);
         }
         if (lista[i][j + 1] != null) {
-          console.log("El rey puede comer a " + lista[i][j + 1]);
+          console.log("El Rey(K) puede comer a " + lista[i][j + 1]);
         }
         if (lista[i + 1][j + 1] != null) {
-          console.log("El rey puede comer a " + lista[i + 1][j + 1]);
+          console.log("El Rey(K) puede comer a " + lista[i + 1][j + 1]);
         }
         if (lista[i + 1][j - 1] != null) {
-          console.log("El rey puede comer a " + lista[i + 1][j - 1]);
+          console.log("El Rey(K) puede comer a " + lista[i + 1][j - 1]);
         }
-        if (lista[i+1][j] != null) {
-          console.log("El rey puede comer a " + lista[i+1][j]);
+        if (lista[i + 1][j] != null) {
+          console.log("El Rey(K) puede comer a " + lista[i + 1][j]);
         }
       }
     }
   }
 }
 
-// function alfilMove(lista,ficha){
-//   let pos_x = i;
-//   let pos_y = j;
-
-//   for (let i = 0; i < lista.length; i++) {
-//     for (let j = 0; j < lista.length; j++) {
-//       if (lista[i][j] == ficha) {
-//         while(){
-
-//         }
-//       }
-//     }
-//   }
-// }
+function torreMove(lista, ficha) {
+  for (let i = 0; i < lista.length; i++) {
+    for (let j = 0; j < lista.length; j++) {
+      if (lista[i][j] == ficha) {
+        if(i + 1  > lista.length || j + 1 > lista.length || i - 1 < 0 || j - 1 < 0){
+          console.log("No puede comer a nadie")
+          break;
+        }
+        for (let k = i - 1; k >= 0; k--) {
+          if (lista[k][j] != null) {
+            console.log("La Torre(T) puede comer a " + lista[k][j]);
+          }
+        }
+        for (let k = i + 1; k < lista.length; k++) {
+          if (lista[k][j] != null) {
+            console.log("La Torre(T) puede comer a " + lista[k][j]);
+          }
+        }
+        for (let k = j - 1; k >= 0; k--) {
+          if (lista[i][k] != null) {
+            console.log("La Torre(T) puede comer a " + lista[i][k]);
+          }
+        }
+        for (let k = j + 1; k < lista.length; k++) {
+          if (lista[i][k] != null) {
+            console.log("La Torre(T) puede comer a " + lista[i][k]);
+          }
+        }
+      }
+    }
+  }
+}
+function alfilMove(lista, ficha) {
+  for (let i = 0; i < lista.length; i++) {
+    for (let j = 0; j < lista.length; j++) {
+      if (lista[i][j] == ficha) {
+        if(i + 1  > lista.length || j + 1 > lista.length || i - 1 < 0 || j - 1 < 0){
+          console.log("No puede comer a nadie")
+          break;
+        }
+        let limite = 1;
+        while (i - limite >= 0 && j + limite < lista.length) {
+          if (lista[i - limite][j + limite] != null) {
+            console.log("El Alfil(A) puede comer a " + lista[i - limite][j + limite]);
+          }
+          limite++;
+        }
+        limite = 1;
+        while (i - limite >= 0 && j - limite >= 0) {
+          if (lista[i - limite][j - limite] != null) {
+            console.log("El Alfil(A) puede comer a " + lista[i - limite][j - limite]);
+          }
+          limite++;
+        }
+      }
+    }
+  }
+}
+function caballoMove(lista, ficha) {
+  for (let i = 0; i < lista.length; i++) {
+    for (let j = 0; j < lista.length; j++) {
+      if (lista[i][j] == ficha) {
+        if(i + 1  > lista.length || j + 1 > lista.length || i - 1 < 0 || j - 1 < 0){
+          console.log("No puede comer a nadie")
+          break;
+        }
+        if (i - 2 >= 0 && j - 1 >= 0 && lista[i - 2][j - 1] != null) {
+          console.log("El Caballo(C) puede comer a " + lista[i - 2][j - 1]);
+        }
+        if (i - 2 >= 0 && j + 1 < lista.length && lista[i - 2][j + 1] != null) {
+          console.log("El Caballo(C) puede comer a " + lista[i - 2][j + 1]);
+        }
+        if (i + 2 < lista.length && j - 1 >= 0 && lista[i + 2][j - 1] != null) {
+          console.log("El Caballo(C) puede comer a " + lista[i + 2][j - 1]);
+        }
+        if (i + 2 < lista.length && j + 1 < lista.length && lista[i + 2][j + 1] != null) {
+          console.log("El Caballo(C) puede comer a " + lista[i + 2][j + 1]);
+        }
+        if (i - 1 >= 0 && j - 2 >= 0 && lista[i - 1][j - 2] != null) {
+          console.log("El Caballo(C) puede comer a " + lista[i - 1][j - 2]);
+        }
+        if (i - 1 >= 0 && j + 2 < lista.length && lista[i - 1][j + 2] != null) {
+          console.log("El Caballo(C) puede comer a " + lista[i - 1][j + 2]);
+        }
+        if (i + 1 < lista.length && j - 2 >= 0 && lista[i + 1][j - 2] != null) {
+          console.log("El Caballo(C) puede comer a " + lista[i + 1][j - 2]);
+        }
+        if (i + 1 < lista.length && j + 2 < lista.length && lista[i + 1][j + 2] != null) {
+          console.log("El Caballo(C) puede comer a " + lista[i + 1][j + 2]);
+        }
+      }
+    }
+  }
+}
+function reinaMove(lista, ficha) {
+  for (let i = 0; i < lista.length; i++) {
+    for (let j = 0; j < lista.length; j++) {
+      if (lista[i][j] == ficha) {
+        if(i + 1  > lista.length || j + 1 > lista.length || i - 1 < 0 || j - 1 < 0){
+          console.log("No puede comer a nadie")
+          break;
+        }
+        for (let k = i - 1; k >= 0; k--) {
+          if (lista[k][j] != null) {
+            console.log("La Reina(Q) puede comer a " + lista[k][j]);
+          }
+        }
+        for (let k = i + 1; k < lista.length; k++) {
+          if (lista[k][j] != null) {
+            console.log("La Reina(Q) puede comer a " + lista[k][j]);
+          }
+        }
+        for (let k = j - 1; k >= 0; k--) {
+          if (lista[i][k] != null) {
+            console.log("La Reina(Q) puede comer a " + lista[i][k]);
+          }
+        }
+        for (let k = j + 1; k < lista.length; k++) {
+          if (lista[i][k] != null) {
+            console.log("La Reina(Q) puede comer a " + lista[i][k]);
+          }
+        }
+        for (let k = 1; i - k >= 0 && j - k >= 0; k++) {
+          if (lista[i - k][j - k] != null) {
+            console.log("La Reina(Q) puede comer a " + lista[i - k][j - k]);
+          }
+        }
+        for (let k = 1; i - k >= 0 && j + k < lista.length; k++) {
+          if (lista[i - k][j + k] != null) {
+            console.log("La Reina(Q) puede comer a " + lista[i - k][j + k]);
+          }
+        }
+        for (let k = 1; i + k < lista.length && j - k >= 0; k++) {
+          if (lista[i + k][j - k] != null) {
+            console.log("La Reina(Q) puede comer a " + lista[i + k][j - k]);
+          }
+        }
+        for (let k = 1; i + k < lista.length && j + k < lista.length; k++) {
+          if (lista[i + k][j + k] != null) {
+            console.log("La Reina(Q) puede comer a " + lista[i + k][j + k]);
+          }
+        }
+      }
+    }
+  }
+}
 
 crearTablero(8);
 colocarFichas(tablero, fichas);
-// impresora(tablero);
 peonMove(tablero, peon);
 reyMove(tablero, rey);
-//alfilMove(tablero,alfil);
+torreMove(tablero, torre);
+alfilMove(tablero, alfil);
+reinaMove(tablero, reina);
+caballoMove(tablero, caballo);
