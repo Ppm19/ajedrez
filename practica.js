@@ -36,19 +36,32 @@ function crearTablero(num_casillas) {
 function colocarFichas(lista, lista2) {
   let contador = 0;
 
-  for (let i = 0; i < lista.length; i++) {
-    for (let j = 0; j < lista.length; j++) {
-      for (let ficha of lista2) {
-        if (contador < lista2.length) {
-          let x = Math.floor(Math.random() * 8);
-          let y = Math.floor(Math.random() * 8);
-
-          tablero[x][y] = ficha;
-          contador++;
-        }
+  
+  for(let ficha of fichas) {
+    let colocada = false;
+    while(!colocada) {
+      let x = Math.floor(Math.random() * 8);
+      let y = Math.floor(Math.random() * 8);
+      if(!tablero[x][y]) {
+        tablero[x][y] = ficha;
+        colocada = true;
       }
     }
   }
+
+  // for (let i = 0; i < lista.length; i++) {
+  //   for (let j = 0; j < lista.length; j++) {
+  //     for (let ficha of lista2) {
+  //       if (contador < lista2.length) {
+  //         let x = Math.floor(Math.random() * 8);
+  //         let y = Math.floor(Math.random() * 8);
+
+  //         tablero[x][y] = ficha;
+  //         contador++;
+  //       }
+  //     }
+  //   }
+  // }
   return impresora(lista);
 }
 
